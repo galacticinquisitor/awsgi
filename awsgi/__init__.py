@@ -43,7 +43,7 @@ class StartResponse:
 
 def environ(event, context):
     environ = {
-        'REQUEST_METHOD': event['httpMethod'],
+        'REQUEST_METHOD': event['context']['http-method'],
         'SCRIPT_NAME': '',
         'PATH_INFO': event['path'],
         'QUERY_STRING': urlencode(event['queryStringParameters'] or {}),
