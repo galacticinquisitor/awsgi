@@ -45,7 +45,7 @@ def environ(event, context):
     environ = {
         'REQUEST_METHOD': event['context']['http-method'],
         'SCRIPT_NAME': '',
-        'PATH_INFO': event['params']['path'],
+        'PATH_INFO': '', #event['params']['path'],
         'QUERY_STRING': urlencode(event['params']['querystring'] or {}),
         'REMOTE_ADDR': '127.0.0.1',
         'CONTENT_LENGTH': str(len(event.get('json-body', '') or '')),
@@ -61,7 +61,6 @@ def environ(event, context):
         'awsgi.context': context,
     }
     headers = event['params'].get('header', {})
-    print(headers)
     for k, v in headers.items():
         k = k.upper().replace('-', '_')
 
