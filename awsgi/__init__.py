@@ -60,7 +60,8 @@ def environ(event, context):
         'awsgi.event': event,
         'awsgi.context': context,
     }
-    headers = event.get('header', {})
+    headers = event['params'].get('header', {})
+    print(headers)
     for k, v in headers.items():
         k = k.upper().replace('-', '_')
 
